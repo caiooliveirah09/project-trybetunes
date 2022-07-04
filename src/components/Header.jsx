@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
 
