@@ -8,7 +8,7 @@ class Search extends React.Component {
     if (logged) {
       return <div data-testid="page-search">search</div>;
     }
-    return <div>permission denied, please login! </div>;
+    return <div data-testid="page-search">permission denied, please login! </div>;
   }
 }
 
