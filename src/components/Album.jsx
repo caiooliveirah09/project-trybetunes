@@ -24,14 +24,20 @@ class Album extends React.Component {
     this.setState({ loading: true }, async () => {
       const fetchMusics = await getMusics(id);
       const favoriteSongs = await getFavoriteSongs();
-      this.setState((previousState) => ({
+      this.setState(() => ({
         musics: fetchMusics.slice(1),
         loading: false,
         artistName: fetchMusics[0].artistName,
         collectionName: fetchMusics[0].collectionName,
-        favoriteSongs: [...previousState.favoriteSongs, ...favoriteSongs],
+        favoriteSongs,
       }));
     });
+  }
+
+  asyncFunction = async (music) => {
+    this.setState((previousState) => ({
+      favoriteSongs: [...previousState.favoriteSongs, music],
+    }));
   }
 
   render() {
@@ -50,6 +56,7 @@ class Album extends React.Component {
           trackId={ music.trackId }
           musicInfo={ music }
           favoriteSongs={ favoriteSongs }
+          asyncFunction={ this.asyncFunction }
         />))}
       </div>
     );
